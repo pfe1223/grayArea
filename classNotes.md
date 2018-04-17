@@ -29,3 +29,8 @@
 * `<span>` does not go to a new line
 * Useful [site](http://www.htmlandcssbook.com) with code samples for HTML and CSS
 * HTML 5 [boiler plate](https://html5boilerplate.com/)
+
+## Class 3
+* [Tachyon](http://tachyons.io/) CSS library
+* Use [Sass](https://sass-lang.com/) for variables (and other stuff) in CSS
+* W3C School [article](https://www.w3schools.com/css/css_positioning.asp) on CSS position
