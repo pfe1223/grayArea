@@ -34,3 +34,8 @@
 * [Tachyon](http://tachyons.io/) CSS library
 * Use [Sass](https://sass-lang.com/) for variables (and other stuff) in CSS
 * W3C School [article](https://www.w3schools.com/css/css_positioning.asp) on CSS position
+
+# Week 2 Physical Computing
+* Instructor's page on [Instagram](https://instagram.com/mhellar)
+* [Soldering presentation](https://mhellar.github.io/ga_physcomp/3/#/1)
+* 
