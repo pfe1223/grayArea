@@ -8,7 +8,7 @@ From the Rune [website](http://runemadsen.github.io/rune.js/):
 >for color conversion, grid systems, typography, pixel iteration,
 >as well as an expanding set of computational geometry helpers.
 
-For use in the browser, download the [library](https://github.com/runemadsen/rune.js/releases/tag/1.1.4). Use the [NPM](https://www.npmjs.com/package/rune.js) package for Node.
+For use in the browser, download the [library](https://github.com/runemadsen/rune.js/releases/tag/1.1.4). Use the [NPM](https://www.npmjs.com/package/rune.js) for Node.
 
 ## Setup
 Setting up Rune is just like P5, link to the library in `<head>` and link to the JS file in `<body>`. You even use `sketch.js`.
@@ -29,7 +29,7 @@ Setting up Rune is just like P5, link to the library in `<head>` and link to the
 A basic sketch in Rune looks something like this:
 
 ~~~ javascript
-var r = new Rune({
+let r = new Rune({
   container: "body",
   width: 500,
   height: 400
