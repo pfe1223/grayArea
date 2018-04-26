@@ -17,14 +17,6 @@
 	<script type="text/javascript" src="rune.js"></script>
 
 	<style>
-		:root {
-			--bg-color: #485058;
-			--divider-color: #D7443F;
-			--normal-link: #8698AD;
-			--visited-link: #A6A5A1;
-			--font-color: #F1ECE9;
-		}
-
 		body {
 			background-color: #485058;
 		}
@@ -59,7 +51,7 @@
 		}
 
 		pre {
-			width: 70%;
+			width: 60%;
 			/* margin: auto; */
 		}
 
@@ -70,202 +62,129 @@
 		code {
 			color: #A1CD73;
 		}
+
+		#interior {
+			width: 90%;
+			margin: auto;
+
+		}
 	</style>
 </head>
 
 <body>
-	<h1 id="rune-js">Rune.js</h1>
-	<p>From the Rune <a href="http://runemadsen.github.io/rune.js/">website</a>:</p>
-	<blockquote>
-		<p>Rune.js is a JavaScript library for programming graphic design systems with SVG in both the browser or node.js. It features a chainable drawing API, an unobtrusive scene graph, and a range of features aimed specifically at graphic designers: native
-			support for color conversion, grid systems, typography, pixel iteration, as well as an expanding set of computational geometry helpers.</p>
-	</blockquote>
-	<p>For use in the browser, download the <a href="https://github.com/runemadsen/rune.js/releases/tag/1.1.4">library</a>. Use the <a href="https://www.npmjs.com/package/rune.js">NPM</a> package for Node.</p>
-	<h2 id="setup">Setup</h2>
-	<p>Setting up Rune is just like P5, link to the library in <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;head&gt;</code> and link to the JS file in <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;body&gt;</code>.
-		You even use <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">sketch.js</code>.</p>
-	<pre class="prettyprint lang-html"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>head</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span>&nbsp;&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>script&nbsp;type</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>text/javascript</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span>&nbsp;src</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>rune.js</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>script</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>head</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div></pre>
-	<pre class="prettyprint lang-html"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>body</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span>&nbsp;&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>script&nbsp;type</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>text/javascript</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span>&nbsp;src</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>sketch.js</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>script</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>body</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div></pre>
-	<h2 id="skeleton-program">Skeleton Program</h2>
-	<p>A basic sketch in Rune looks something like this:</p>
-	<pre class="prettyprint">let r = new Rune({
+	<div id="interior">
+		<h1 id="rune-js">Rune.js</h1>
+		<p>From the Rune <a href="http://runemadsen.github.io/rune.js/">website</a>:</p>
+		<blockquote>
+			<p>Rune.js is a JavaScript library for programming graphic design systems with SVG in both the browser or node.js. It features a chainable drawing API, an unobtrusive scene graph, and a range of features aimed specifically at graphic designers: native
+				support for color conversion, grid systems, typography, pixel iteration, as well as an expanding set of computational geometry helpers.</p>
+		</blockquote>
+		<p>For use in the browser, download the <a href="https://github.com/runemadsen/rune.js/releases/tag/1.1.4">library</a>. Use the <a href="https://www.npmjs.com/package/rune.js">NPM</a> package for Node.</p>
+		<h2 id="setup">Setup</h2>
+		<p>Setting up Rune is just like P5, link to the library in <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;head&gt;</code> and link to the JS file in <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">&lt;body&gt;</code>.
+			You even use <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">sketch.js</code>.</p>
+		<pre class="prettyprint"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>head</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span>&nbsp;&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>script&nbsp;type</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>text/javascript</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span>&nbsp;src</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>rune.js</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>script</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>head</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div> </pre>
+		<pre class="prettyprint lang-html"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>body</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span>&nbsp;&nbsp;</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span>script&nbsp;type</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>text/javascript</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span>&nbsp;src</span><span class="syntax--keyword syntax--operator syntax--assignment syntax--js"><span>=</span></span><span class="syntax--string syntax--quoted syntax--double syntax--js"><span class="syntax--punctuation syntax--definition syntax--string syntax--begin syntax--js"><span>"</span></span><span>sketch.js</span><span class="syntax--punctuation syntax--definition syntax--string syntax--end syntax--js"><span>"</span></span></span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>script</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div><div class="line"><span class="syntax--source syntax--js"><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&lt;</span></span><span class="syntax--keyword syntax--operator syntax--js"><span>/</span></span><span>body</span><span class="syntax--keyword syntax--operator syntax--comparison syntax--js"><span>&gt;</span></span></span></div></pre>
+		<h2 id="skeleton-program">Skeleton Program</h2>
+		<p>A basic sketch in Rune looks something like this:</p>
+		<pre class="prettyprint">let r = new Rune({
   container: "body",
   width: 500,
   height: 400
 });</pre>
-	<p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">r</code> is a Rune object. Since Rune is going to create an SVG, the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">container</code>		is the DOM element that will contain the SVG. <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">width</code> and <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">height</code> describe
-		the size of the SVG.</p>
-	<h2 id="adding-objects-to-rune">Adding Objects to Rune</h2>
-	<p>Rune include several basic shapes like <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ellipse</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">circle</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">line</code>,
-		<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rect</code>, and <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">triangle</code>.</p>
-	<pre class="prettyprint">r.line(0, 0, 100, 100);
-
+		<p><code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">r</code> is a Rune object. Since Rune is going to create an SVG, the <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">container</code>			is the DOM element that will contain the SVG. <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">width</code> and <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">height</code> describe
+			the size of the SVG.</p>
+		<h2 id="adding-objects-to-rune">Adding Objects to Rune</h2>
+		<p>Rune include several basic shapes like <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">ellipse</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">circle</code>, <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">line</code>,
+			<code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">rect</code>, and <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">triangle</code>.</p>
+		<pre class="prettyprint">
+r.line(0, 0, 100, 100);
 r.rect(0, 0, 100, 50);
-
 r.ellipse(0, 0, 100, 50);
-
 r.circle(0, 0, 100);
-
 r.triangle(0, 0, 100, 0, 100, 100);</pre>
-	<h2 id="chainable-syntax">Chainable Syntax</h2>
-	<p>Rune has a chainable syntax, which means several methods can be linked to one one Rune object. Some Rune objects, like <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">polygon</code> require the chain syntax since
-		the polygon requires a series of y and y coordinates.</p>
-	<pre class="prettyprint"><div class="line"><span class="syntax--source syntax--js"><span class="syntax--variable syntax--other syntax--object syntax--js"><span>r.polygon(0,0)
+		<h2 id="chainable-syntax">Chainable Syntax</h2>
+		<p>Rune has a chainable syntax, which means several methods can be linked to one one Rune object. Some Rune objects, like <code style="font-family: Menlo, Consolas, &quot;DejaVu Sans Mono&quot;, monospace;">polygon</code> require the chain syntax since
+			the polygon requires a series of y and y coordinates.</p>
+		<pre class="prettyprint">r.polygon(0,0)
 &nbsp.lineTo(100, 0)
 &nbsp.lineTo(100, 100)
 &nbsp.lineTo(0, 100);</pre>
-	<p>The chainable syntax can be used to describe the various attributes that make up a Rune object. The code below would create a rectangle that is moved to location (100, 100), filled with the color blue, and rotated 45 degrees.</p>
-	<pre class="prettyprint">r.rect(0, 0, 50, 50)
+		<p>The chainable syntax can be used to describe the various attributes that make up a Rune object. The code below would create a rectangle that is moved to location (100, 100), filled with the color blue, and rotated 45 degrees.</p>
+		<pre class="prettyprint">
+r.rect(0, 0, 50, 50)
 &nbsp.move(100, 100)
 &nbsp.fill(0, 0, 255)
 &nbsp.rotate(45);</pre>
-	<h2 id="rune-examples">Rune Examples</h2>
-	<h1>Add Rune 1 Script</h1>
-	<pre class="prettyprint">//create stage for SVG
-let r = new Rune ({
-&nbsp container: "body"
-&nbsp width: 500,
-&nbsp height:  400
+		<h2 id="rune-examples">Rune Examples</h2>
+		<!-- <script language="javascript" src="sketch1.js" type="text/javascript">
+		</script> -->
+		<pre class="prettyprint">
+//create stage for SVG
+let r = new Rune({
+ container: "body"
+ width: 500,
+ height: 400
 });
 
 //loop to make 250 circles
-for (let i = 0 ; i < 250; i++){
-&nbsp //create Rune object with random location and color
-&nbsp r.circle(0, 0, 50)
-&nbsp .stroke(false)
-&nbsp .move(Rune.random(r.width), Rune.random(r.height))
-&nbsp .fill(Rune.random(255), Rune.random(255), Rune.random(255), 0.5);
+for (let i = 0; i < 250; i++) { //create Rune object with random location and color
+ r.circle(0, 0, 50)
+  .stroke(false)
+  .move(Rune.random(r.width), Rune.random(r.height))
+  .fill(Rune.random(255), Rune.random(255), Rune.random(255), 0.5);
 }
 
-r.draw(); //draw the SVG (one time, not a loop)
-</pre>
-	<script id="codeSample">
-		//create stage for SVG
-		var r = new Rune({
-			container: "body",
-			width: 500,
-			height: 400
-		});
-
-		let speed = 2; //degress of rotation
-		let boxes = []; //empty array for the boxes
-
-		for (let i = 0; i < 20; i++) {
-			let x = Rune.random(-500, -100); //random x-pos off the stage
-			let y = Rune.random(r.height); //random y-pos
-			let rd = Rune.random(255); //random value for red
-			let grn = Rune.random(255); //random value for green
-			let ble = Rune.random(255); //random value for blue
-			//make Rune rectangle object with above characteristics
-			let box = r.rect(x, y, 100, 100)
-				.fill(rd, grn, ble, 0.3)
-				.stroke(false)
-				.round(20);
-			boxes.push(box); //add Rune object to array
-		}
-
-		//Event listener for update, similar to draw in P5
-		r.on('update', function() {
-			//loop through array of Rune objexts
-			for (let i = 0; i < boxes.length; i++) {
-				boxes[i].move(speed, 0, true); //move Rune object to the right
-				//if Rune object off stage, reset position
-				//will have a new random y-pos
-				if (boxes[i].state.x > r.width) {
-					boxes[i].move(Rune.random(-500, -100), Rune.random(r.height));
-				}
-			}
-		});
-
-		r.play(); //start the animation (loop)
-	</script>
-	<pre class="prettyprint">
+r.draw(); //draw the SVG (one time, not a loop) </pre>
+		<!-- <script language="javascript" src="sketch2.js" type="text/javascript"></script>  -->
+		<pre class="prettyprint">
 //create stage for SVG
 var r = new Rune({
 container: "body",
-&nbsp width: 500,
-&nbsp height: 400
+width: 500,
+height: 400
 });
 
 let speed = 2; //degress of rotation
 let boxes = []; //empty array for the boxes
 
 for (let i = 0; i < 20; i++) {
-&nbsp let x = Rune.random(-500, -100); //random x-pos off the stage
-&nbsp let y = Rune.random(r.height); //random y-pos
-&nbsp let rd = Rune.random(255); //random value for red
-&nbsp let grn = Rune.random(255); //random value for green
-&nbsp let ble = Rune.random(255); //random value for blue
-	  //make Rune rectangle object with above characteristics
-&nbsp let box = r.rect(x, y, 100, 100)
-	    &nbsp.fill(rd, grn, ble, 0.3)
-	    &nbsp.stroke(false)
-	    &nbsp.round(20);
-&nbsp boxes.push(box); //add Rune object to array
+ let x = Rune.random(-500, -100); //random x-pos off the stage
+ let y = Rune.random(r.height); //random y-pos
+ let rd = Rune.random(255); //random value for red
+ let grn = Rune.random(255); //random value for green
+ let ble = Rune.random(255); //random value for blue
+
+ //make Rune rectangle object with above characteristics
+ let box = r.rect(x, y, 100, 100)
+  .fill(rd, grn, ble, 0.3)
+  .stroke(false)
+  .round(20);
+
+ boxes.push(box); //add Rune object to array
 }
 
 //Event listener for update, similar to draw in P5
 r.on('update', function() {
-&nbsp //loop through array of Rune objexts
-&nbsp for (let i = 0; i < boxes.length; i++) {
-&nbsp&nbsp boxes[i].move(speed, 0, true); //move Rune object to the right
-&nbsp&nbsp //if Rune object off stage, reset position
-&nbsp&nbsp //will have a new random y-pos
-&nbsp&nbsp if (boxes[i].state.x > r.width) {
-&nbsp&nbsp&nbsp boxes[i].move(Rune.random(-500, -100), Rune.random(r.height));
-&nbsp&nbsp }
-&nbsp}
+ //loop through array of Rune objexts
+ for (let i = 0; i < boxes.length; i++) {
+  boxes[i].move(speed, 0, true); //move Rune object to the right
+  //if Rune object off stage, reset position, will have a new random y-pos
+  if (boxes[i].state.x > r.width) { &
+   boxes[i].move(Rune.random(-500, -100), Rune.random(r.height));
+  }
+ }
 });
 
 r.play(); //start the animation (loop) </pre>
 
-	<script id="codeSample">
-		//create stage for SVG
-		let r = new Rune({
-			container: "body",
-			width: 500,
-			height: 400
-		});
-
-		let a = 0; //angle in radians
-		let centerX = r.width / 2; //x-coord for center of stage
-		let centerY = r.height / 2; //y-coord for center of stage
-		let offset = 90; //distance between center of stage and circle
-		let x = calcPos("sin", a, centerX); //calculate x-pos
-		let y = calcPos("cos", a, centerY); //calculate y-pos
-
-		//Uses polar to Cartesian transformation to calculate x- and y-pos
-		function calcPos(operation, angle, position) {
-			if (operation === "sin") { //calculation for sin
-				return Math.sin(Rune.radians(angle)) * offset + position;
-			} else if (operation === "cos") { //calculation for cos
-				return Math.cos(Rune.radians(angle)) * offset + position;
-			}
-		}
-
-		//create circle object
-		let c1 = r.circle(0, 0, 0)
-			.radius(40) //set radius of circle
-			.stroke(false) //no stroke
-			.fill(63, 154, 130) //fill color
-			.move(x, y); //set position of circle
-
-		//for every loop...
-		r.on('update', function() {
-			a += 1.2; //increase the angle
-			x = calcPos("sin", a, centerX); //recalculate x-pos
-			y = calcPos("cos", a, centerY); //recalculate y-pos
-			c1.move(x, y); //set new position
-		});
-
-		r.play(); //start animation (loop)
-	</script>
-	<pre class="prettyprint">
+		<!-- <script type="text/javascript" src="sketch1.js"></script> -->
+		<pre class="prettyprint">
 //create stage for SVG
 let r = new Rune({
-container: "body",
-&nbsp width: 500,
-&nbsp height: 400
+ container: "body",
+ width: 500,
+ height: 400
 });
 
 let a = 0; //angle in radians
@@ -277,29 +196,30 @@ let y = calcPos("cos", a, centerY); //calculate y-pos
 
 //Uses polar to Cartesian transformation to calculate x- and y-pos
 function calcPos(operation, angle, position) {
-&nbsp if (operation === "sin") { //calculation for sin
-&nbsp&nbsp return Math.sin(Rune.radians(angle)) * offset + position;
-&nbsp } else if (operation === "cos") { //calculation for cos
-&nbsp&nbsp return Math.cos(Rune.radians(angle)) * offset + position;
-&nbsp }
+ if (operation === "sin") { //calculation for sin
+  return Math.sin(Rune.radians(angle)) * offset + position;
+ } else if (operation === "cos") { //calculation for cos
+  return Math.cos(Rune.radians(angle)) * offset + position;
+ }
 }
 
 //create circle object
 let c1 = r.circle(0, 0, 0)
-	  .radius(40) //set radius of circle
-	  .stroke(false) //no stroke
-	  .fill(63, 154, 130) //fill color
-	  .move(x, y); //set position of circle
+ .radius(40) //set radius of circle
+ .stroke(false) //no stroke
+ .fill(63, 154, 130) //fill color
+ .move(x, y); //set position of circle
 
 //for every loop...
 r.on('update', function() {
-&nbsp a += 1.2; //increase the angle
-&nbsp x = calcPos("sin", a, centerX); //recalculate x-pos
-&nbsp y = calcPos("cos", a, centerY); //recalculate y-pos
-&nbsp c1.move(x, y); //set new position
+ a += 1.2; //increase the angle
+ x = calcPos("sin", a, centerX); //recalculate x-pos
+ y = calcPos("cos", a, centerY); //recalculate y-pos
+ c1.move(x, y); //set new position
 });
 
 r.play(); //start animation (loop)</pre>
+	</div>
 </body>
 
 </html>
