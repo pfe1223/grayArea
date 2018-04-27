@@ -1,6 +1,6 @@
 //create stage for SVG
 let r = new Rune({
-  container: "body",
+  container: "#example1",
   width: 500,
   height: 400
 });
