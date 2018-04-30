@@ -1,13 +1,13 @@
 //create stage for SVG
-let r = new Rune({
-  container: "body",
+let r3 = new Rune({
+  container: "#example3",
   width: 500,
   height: 400
 });
 
 let a = 0; //angle in radians
-let centerX = r.width / 2; //x-coord for center of stage
-let centerY = r.height / 2; //y-coord for center of stage
+let centerX = r3.width / 2; //x-coord for center of stage
+let centerY = r3.height / 2; //y-coord for center of stage
 let offset = 90; //distance between center of stage and circle
 let x = calcPos("sin", a, centerX); //calculate x-pos
 let y = calcPos("cos", a, centerY); //calculate y-pos
@@ -22,18 +22,18 @@ function calcPos(operation, angle, position) {
 }
 
 //create circle object
-let c1 = r.circle(0, 0, 0)
+let c1 = r3.circle(0, 0, 0)
   .radius(40) //set radius of circle
   .stroke(false) //no stroke
   .fill(63, 154, 130) //fill color
   .move(x, y); //set position of circle
 
 //for every loop...
-r.on('update', function() {
+r3.on('update', function() {
   a += 1.2; //increase the angle
   x = calcPos("sin", a, centerX); //recalculate x-pos
   y = calcPos("cos", a, centerY); //recalculate y-pos
   c1.move(x, y); //set new position
 });
 
-r.play(); //start animation (loop)
+r3.play(); //start animation (loop)

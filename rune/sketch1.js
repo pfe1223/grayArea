@@ -5,6 +5,8 @@ let r = new Rune({
   height: 400
 });
 
+console.log(r);
+
 //loop to make 250 circles
 for (let i = 0; i < 250; i++) {
   //create Rune object with random location and color

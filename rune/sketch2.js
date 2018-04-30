@@ -1,6 +1,6 @@
 //create stage for SVG
-var r = new Rune({
-  container: "body",
+let r2 = new Rune({
+  container: "#example2",
   width: 500,
   height: 400
 });
@@ -15,7 +15,7 @@ for (let i = 0; i < 20; i++) {
   let grn = Rune.random(255); //random value for green
   let ble = Rune.random(255); //random value for blue
   //make Rune rectangle object with above characteristics
-  let box = r.rect(x, y, 100, 100)
+  let box = r2.rect(x, y, 100, 100)
     .fill(rd, grn, ble, 0.3)
     .stroke(false)
     .round(20);
@@ -23,16 +23,16 @@ for (let i = 0; i < 20; i++) {
 }
 
 //Event listener for update, similar to draw in P5
-r.on('update', function() {
+r2.on('update', function() {
   //loop through array of Rune objexts
   for (let i = 0; i < boxes.length; i++) {
     boxes[i].move(speed, 0, true); //move Rune object to the right
     //if Rune object off stage, reset position
     //will have a new random y-pos
-    if (boxes[i].state.x > r.width) {
-      boxes[i].move(Rune.random(-500, -100), Rune.random(r.height));
+    if (boxes[i].state.x > r2.width) {
+      boxes[i].move(Rune.random(-500, -100), Rune.random(r2.height));
     }
   }
 });
 
-r.play(); //start the animation (loop)
+r2.play(); //start the animation (loop)
