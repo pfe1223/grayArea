@@ -45,8 +45,8 @@ socket.on('mysocket', function(data) {
 });
 
 function preload() {
-  song = loadSound('music/papertiger.mp3');
-  // song = loadSound('music/2u.mp3');
+  // song = loadSound('music/papertiger.mp3');
+  song = loadSound('music/raptoyou.mp3');
   // song = loadSound('music/jbreakfast.mp3');
   // song = loadSound('music/thexx.mp3');
 }
@@ -61,41 +61,40 @@ function toggleSong() {
 
 function setup() {
   createCanvas(700, 700);
-  angleMode(DEGREES);
-  noStroke();
-  bands = 256;
-  rings = 10;
-  a = 0;
-  speed = 0.2;
-  w = width / bands; //width of the lines drawn on canvas
-  fft = new p5.FFT(0.9, bands);
-  button = createButton('Play/Pause');
-  button.position(20, 20);
-  button.mousePressed(toggleSong);
-  noFill();
+  angleMode(DEGREES); //use degrees instead of radians
+  bands = 256; //frequency bands to be analyzed by FFT
+  rings = 10; //number of rings of color
+  a = 0; //angle of rotation
+  speed = 0.2; //speed of rotation
+  fft = new p5.FFT(0.9, bands); //create FFT object
+  button = createButton('Play/Pause'); //pause button
+  button.position(20, 20); //set button position
+  button.mousePressed(toggleSong); //callback for pause function
+  noFill(); //don't fill rings of color
   strokeWeight(3);
   colorMode(HSB);
-  song.loop();
+  song.loop(); //loop song
 }
 
 function draw() {
   background(53);
-  let spectrum = fft.analyze();
-  translate(width / 2, height / 2);
-  rotate(a);
-  for (let j = 0; j < rings; j++) {
+  let spectrum = fft.analyze(); //array of FFT value for each band
+  translate(width / 2, height / 2); //move to middle of canvas
+  rotate(a); //rotate all the rings
+  for (let j = 0; j < rings; j++) { //loop to set color of rings
     let clr = map(j, 0, rings, 0, 255);
     stroke(clr, 255, 255);
     beginShape();
+    //loop to draw each ring of color
     for (let i = 0; i < spectrum.length; i++) {
       let angle = map(i, 0, spectrum.length, 0, 360);
-      let amp = spectrum[i];
-      let r = map(amp, 0, 256, 25 * j, 25 * j + 100);
-      let x = cos(angle) * r;
-      let y = sin(angle) * r;
-      vertex(x, y);
+      let amp = spectrum[i]; //amplitude at each frequency
+      let r = map(amp, 0, 256, 25 * j, 25 * j + 100); //distance from center of the canvas
+      let x = cos(angle) * r; //x-pos
+      let y = sin(angle) * r; //y-pos
+      vertex(x, y); //draw a vertex at (x, y)
     }
-    endShape(CLOSE);
+    endShape(CLOSE); //close the ring of color
   }
-  a += speed;
+  a += speed; //increase angle of rotation
 }
