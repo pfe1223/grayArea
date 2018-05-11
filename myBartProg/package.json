@@ -1,0 +1,17 @@
+{
+  "name": "mybartprog",
+  "version": "0.1.0",
+  "description": "Predicting Bart",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "BART"
+  ],
+  "author": "Patrick",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "bart": "0.0.3"
+  }
+}
