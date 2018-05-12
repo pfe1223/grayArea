@@ -10,7 +10,7 @@ let socket = io.connect(window.location.origin);
 socket.on('mysocket', function(data) {
   console.log(data[0] + " " + data[1]);
   if (data[0] === "/1/fader1" && data[1] !== null) {
-    f1 = map(data[1], 0, 1, 0.2, 4);
+    f1 = map(data[1], 0, 1, 1, 4);
   }
   if (data[0] === "/1/fader2" && data[1] !== null) {
     f2 = map(data[1], 0, 1, 0, 2);
@@ -39,9 +39,9 @@ socket.on('mysocket', function(data) {
 });
 
 function preload() {
-  // song = loadSound('music/papertiger.mp3');
+  song = loadSound('music/papertiger.mp3');
   // song = loadSound('music/raptoyou.mp3');
-  song = loadSound('music/jbreakfast.mp3');
+  // song = loadSound('music/jbreakfast.mp3');
   // song = loadSound('music/thexx.mp3');
 }
 
@@ -54,7 +54,7 @@ function toggleSong() {
 }
 
 function setup() {
-  createCanvas(800, 800);
+  createCanvas(850, 850);
   angleMode(DEGREES); //use degrees instead of radians
   bands = 256; //frequency bands to be analyzed by FFT
   rings = 4; //number of rings of color
@@ -71,7 +71,7 @@ function setup() {
   button.position(20, 20); //set button position
   button.mousePressed(toggleSong); //callback for pause function
   noFill(); //don't fill rings of color
-  strokeWeight(3); //weight of rings
+  strokeWeight(5); //weight of rings
   colorMode(HSB); //use hue, saturation, and brightness
   song.loop(); //loop song
 }
@@ -116,8 +116,8 @@ function draw() {
   for (let j = 0; j < rings; j++) { //loop to set color of rings
     let clr = map(j, 0, rings, 0, 255);
     stroke(clr, sat, 255);
-    push();
     if (j % 2 === 0) {
+      push();
       rotate(a + j * 15);
       beginShape();
       //loop to draw each ring of color
@@ -132,6 +132,7 @@ function draw() {
       endShape(CLOSE); //close the ring of color
       pop();
     } else {
+      push();
       rotate(-a - j * 15);
       beginShape();
       //loop to draw each ring of color
