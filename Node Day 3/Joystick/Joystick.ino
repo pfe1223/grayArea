@@ -1,5 +1,4 @@
 
-
 // These constants won't change.  They're used to give names
 // to the pins used:
 const int analogInPinX = A0;  
