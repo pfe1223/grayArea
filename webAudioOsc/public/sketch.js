@@ -39,6 +39,84 @@ socket.on('mysocket', function(data) {
   }
 });
 
+// Web Audio Stuff
+//set AudioContext class for compatibility
+let AudioContext = window.AudioContext || window.webkitAudioContext;
+
+//create audio context
+const audioContext = new AudioContext();
+
+//setup master gain
+const masterGain = audioContext.createGain();
+masterGain.connect(audioContext.destination);
+masterGain.gain.value = .8;
+
+
+//setup bus and effects
+const compressor = audioContext.createDynamicsCompressor();
+// compressor.threshold.value = -30;
+// compressor.knee.value = 30;
+// compressor.ratio.value = 3;
+// compressor.attack.value = .1;
+// compressor.release.value = 0.15;
+// compressor.reduction = -20;
+compressor.connect(masterGain);
+
+const submixGain = audioContext.createGain();
+submixGain.connect(compressor);
+
+const effectGain = audioContext.createGain();
+effectGain.connect(compressor);
+
+const delay = new Delay({
+  audioContext,
+  feedback: .8,
+  time: .5
+});
+submixGain.connect(delay.input);
+delay.output.connect(effectGain);
+
+const lfo = new LFO({
+  audioContext
+});
+lfo.connect(delay.input.delayTime, 4);
+lfo.oscillator.frequency = .00125;
+lfo.start();
+
+const reverb = new Reverb({
+  audioContext,
+  url: "impulses/water.wav"
+});
+submixGain.connect(reverb.input);
+reverb.output.connect(effectGain);
+
+delay.output.connect(reverb.input);
+
+//setup analyser
+const analyser = new Analyser({
+  audioContext
+});
+masterGain.connect(analyser.input);
+
+let currentSpin = 0;
+
+
+function connectStream() {
+
+  navigator.getUserMedia({
+      audio: true,
+      video: false
+    },
+    function(stream) {
+      let input = audioContext.createMediaStreamSource(stream);
+      input.connect(submixGain);
+    },
+    function(e) {
+      console.log('No live audio input: ' + e)
+    }
+  )
+}
+
 function preload() {
   // Not using an mp3 for this project
   // song = loadSound('music/papertiger.mp3');
