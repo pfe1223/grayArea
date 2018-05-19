@@ -3,6 +3,7 @@ let f1, f2, f3, f4, f5; //fader variables
 let b1, b2, b3, b4; //button variables
 let b, bg, song, fft, button, w, bands, rings, a, speed;
 let sat;
+let mic; //microphone variable
 
 //bind the Express server to the P5 sketch
 let socket = io.connect(window.location.origin);
@@ -39,19 +40,21 @@ socket.on('mysocket', function(data) {
 });
 
 function preload() {
-  song = loadSound('music/papertiger.mp3');
+  // Not using an mp3 for this project
+  // song = loadSound('music/papertiger.mp3');
   // song = loadSound('music/raptoyou.mp3');
   // song = loadSound('music/jbreakfast.mp3');
   // song = loadSound('music/thexx.mp3');
 }
 
-function toggleSong() {
-  if (song.isPlaying()) {
-    song.pause();
-  } else {
-    song.play();
-  }
-}
+// Removing the play/pause functionality
+// function toggleSong() {
+//   if (song.isPlaying()) {
+//     song.pause();
+//   } else {
+//     song.play();
+//   }
+// }
 
 function setup() {
   createCanvas(850, 850);
@@ -67,13 +70,22 @@ function setup() {
   f3 = 4; //set fader 3 to 0 to avoid 'undefined'
   f4 = 0.2; //set fader 4 to 0 to avoid 'undefined'
   f5 = 0; //set fader 4 to 0 to avoid 'undefined'
-  button = createButton('Play/Pause'); //pause button
-  button.position(20, 20); //set button position
-  button.mousePressed(toggleSong); //callback for pause function
+
+  // Removing play/pause button
+  // button = createButton('Play/Pause'); //pause button
+  // button.position(20, 20); //set button position
+  // button.mousePressed(toggleSong); //callback for pause function
+  
   noFill(); //don't fill rings of color
   strokeWeight(5); //weight of rings
   colorMode(HSB); //use hue, saturation, and brightness
-  song.loop(); //loop song
+  
+  // Not using a song
+  // song.loop(); //loop song
+
+  // Turn on the microphone
+  mic = new p5.AudioIn();
+  mic.start();
 }
 
 function draw() {
@@ -124,6 +136,7 @@ function draw() {
       for (let i = 0; i < spectrum.length; i++) {
         let angle = map(i, 0, spectrum.length, 0, 360);
         let amp = spectrum[i]; //amplitude at each frequency
+        console.log("amp : " + amp);
         let r = map(amp, 0, 256, 25 * j, 25 * j + 100); //distance from center of the canvas
         let x = cos(angle) * r; //x-pos
         let y = sin(angle) * r; //y-pos

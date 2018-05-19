@@ -3,7 +3,6 @@ let f1, f2, f3, f4, f5; //fader variables
 let b1, b2, b3, b4; //button variables
 let b, bg, song, fft, button, w, bands, rings, a, speed;
 let sat;
-let mic; //microphone variable
 
 //bind the Express server to the P5 sketch
 let socket = io.connect(window.location.origin);
@@ -161,9 +160,16 @@ function setup() {
   // Not using a song
   // song.loop(); //loop song
 
-  // Turn on the microphone
-  mic = new p5.AudioIn();
-  mic.start();
+  //resume web audio on first click for Chrome autoplay rules
+  function clickHandler() {
+    audioContext.resume();
+    connectStream();
+    document.body.removeEventListener("click", clickHandler);
+    document.body.removeEventListener("touchend", clickHandler);
+  }
+
+  document.body.addEventListener("click", clickHandler);
+  document.body.addEventListener("touchend", clickHandler);
 }
 
 function draw() {
