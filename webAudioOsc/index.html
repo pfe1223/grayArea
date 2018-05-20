@@ -2,25 +2,25 @@
 <html>
 
 <head>
-  <title>OSC Homework</title>
+  <title>OSC Microphone</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
   <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
 
   <script src="libraries/p5.js" type="text/javascript"></script>
   <script src="libraries/p5.dom.js" type="text/javascript"></script>
-  <script src="libraries/p5.sound.js" type="text/javascript"></script>
+  <!-- <script src="libraries/p5.sound.js" type="text/javascript"></script> -->
+
+  <script src="js/audio-modules/ADSREnvelope.js"></script>
+  <script src="js/audio-modules/Analyser.js"></script>
+  <script src="js/audio-modules/Delay.js"></script>
+  <script src="js/audio-modules/LFO.js"></script>
+  <script src="js/audio-modules/MusicalScale.js"></script>
+  <script src="js/audio-modules/Reverb.js"></script>
+
+  <script src="js/utils/AudioBufferLoader.js"></script>
+  <script src="js/utils/XHR.js"></script>
 
   <script src="sketch.js" type="text/javascript"></script>
-
-  <script src="public/js/audio-modules/ADSREnvelope.js"></script>
-  <script src="public/js/audio-modules/Analyser.js"></script>
-  <script src="public/js/audio-modules/Delay.js"></script>
-  <script src="public/js/audio-modules/LFO.js"></script>
-  <script src="public/js/audio-modules/MusicalScale.js"></script>
-  <script src="public/js/audio-modules/Reverb.js"></script>
-
-  <script src="public/js/utils/AudioBufferLoader.js"></script>
-  <script src="public/js/utils/XHR.js"></script>
 </head>
 
 <body>
