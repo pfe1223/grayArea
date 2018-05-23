@@ -3,6 +3,7 @@ let f1, f2, f3, f4, f5; //fader variables
 let b1, b2, b3, b4; //button variables
 let b, bg, song, fft, button, w, bands, rings, a, speed;
 let sat;
+let mic; //microphone variable
 
 console.log("running");
 
@@ -136,16 +137,9 @@ function setup() {
   strokeWeight(5); //weight of rings
   colorMode(HSB); //use hue, saturation, and brightness
 
-  //resume web audio on first click for Chrome autoplay rules
-  function clickHandler() {
-    audioContext.resume();
-    connectStream();
-    document.body.removeEventListener("click", clickHandler);
-    document.body.removeEventListener("touchend", clickHandler);
-  }
-
-  document.body.addEventListener("click", clickHandler);
-  document.body.addEventListener("touchend", clickHandler);
+  // Turn on the microphone
+  mic = new p5.AudioIn();
+  mic.start();
 }
 
 function draw() {
