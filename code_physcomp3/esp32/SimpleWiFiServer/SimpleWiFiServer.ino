@@ -27,8 +27,8 @@ ported for sparkfun esp32
 
 #include <WiFi.h>
 
-const char* ssid     = "BOTT";
-const char* password = "iotpassword";
+const char* ssid     = "Gray Area Incubator";
+const char* password = "grandstand";
 
 WiFiServer server(80);
 

@@ -6,11 +6,11 @@
 #include <WiFiUdp.h>
 #include <OSCMessage.h>
 
-char ssid[] = "Wired2";          // your network SSID (name)
-char pass[] = "12!trout";                    // your network password
+char ssid[] = "Gray Area Incubator";          // your network SSID (name)
+char pass[] = "grandstand";                    // your network password
 
 WiFiUDP Udp;                                // A UDP instance to let us send and receive packets over UDP
-const IPAddress outIp(10, 0, 0, 124);     // remote IP of your computer
+const IPAddress outIp(10, 10, 7, 99);     // remote IP of your computer
 const unsigned int outPort = 9999;          // remote port to receive OSC
 const unsigned int localPort = 8888;        // local port to listen for OSC packets (actually not used for sending)
 
